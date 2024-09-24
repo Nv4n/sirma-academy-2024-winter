@@ -240,3 +240,300 @@ function logHollowRectangle(length, width) {
     console.log(filledRow);
 }
 
+/**
+ * 17 - New Building
+ * @param {number} floorCount
+ * @param {number} roomCount
+ */
+function logNewBuilding(floorCount, roomCount) {
+    for (let floor = floorCount; floor > 0; floor--) {
+        let prefix = "";
+        if (floor === floorCount) {
+            prefix = "L";
+        } else if (floor % 2 === 0) {
+            prefix = "O";
+        } else {
+            prefix = "A";
+        }
+        let floorSeq = "";
+        for (let roomIndex = 0; roomIndex < roomCount; roomIndex++) {
+            floorSeq += `${prefix}${floor}${roomIndex}`;
+            if (roomIndex < roomCount - 1) {
+                floorSeq += " ";
+            }
+        }
+
+        console.log(floorSeq);
+    }
+}
+
+/**
+ * 18 - Magic Number
+ * @param {number} begin beginning of interval
+ * @param {number} end end of interval
+ * @param {number} magicNumber
+ */
+function logMagicNumberCombinations(begin, end, magicNumber) {
+    let combinationCount = 0;
+    for (let lvalue = begin; lvalue <= end; lvalue++) {
+        for (let rvalue = begin; rvalue <= end; rvalue++) {
+            combinationCount++;
+            if (lvalue + rvalue === magicNumber) {
+                console.log(
+                    `Combination ${combinationCount} - (${lvalue} + ${rvalue} = ${magicNumber})`
+                );
+                return;
+            }
+        }
+    }
+
+    console.log(
+        `${combinationCount} combinations - neither equals ${magicNumber}`
+    );
+}
+
+/**
+ * 19 - Padawan Equipment
+ * @param {number} budget
+ * @param {number} studentsCount
+ * @param {number} saberPrice
+ * @param {number} robePrice
+ * @param {number} beltPrice
+ */
+function logHasBudgetForJediEquipment(
+    budget,
+    studentsCount,
+    saberPrice,
+    robePrice,
+    beltPrice
+) {
+    const totalSaberCost = saberPrice * Math.ceil(studentsCount * 1.1);
+    const totalRobeCost = robePrice * studentsCount;
+    const totalBeltPrice =
+        beltPrice * (studentsCount - Math.floor(studentsCount / 6));
+    const total = totalBeltPrice + totalRobeCost + totalSaberCost;
+
+    if (total <= budget) {
+        console.log(
+            `The money is enough - it would cost ${total.toFixed(2)}lv.`
+        );
+    } else {
+        console.log(
+            `George Lucas will need ${(total - budget).toFixed(2)}lv more.`
+        );
+    }
+}
+
+/**
+ * 20 - Rage Expenses
+ * @param {number} lostGames
+ * @param {number} headsetPrice
+ * @param {number} mousePrice
+ * @param {number} keyboardPrice
+ * @param {number} displayPrice
+ */
+function logRageExpenses(
+    lostGames,
+    headsetPrice,
+    mousePrice,
+    keyboardPrice,
+    displayPrice
+) {
+    const totalHeadsetCost = headsetPrice * Math.floor(lostGames / 2);
+    const totalMouseCost = mousePrice * Math.floor(lostGames / 3);
+    const totalKeyboardCost = keyboardPrice * Math.floor(lostGames / 6);
+    const totalDispalyCost = displayPrice * Math.floor(lostGames / 12);
+    const total =
+        totalHeadsetCost +
+        totalMouseCost +
+        totalKeyboardCost +
+        totalDispalyCost;
+    console.log(`Rage expenses: ${total.toFixed(2)} lv.`);
+}
+
+/**
+ * 21 - Refactor Sum of Odd Numbers
+ * @param {number} n
+ */
+function summOddNumbers(n) {
+    let sum = 0;
+    for (let i = 0; i < n; i++) {
+        const curr = 2 * i + 1;
+        console.log(curr);
+        sum += curr;
+    }
+    console.log(`Sum: ${sum}`);
+}
+
+/**
+ * 22 - Numbers up to 1000, ending in 7
+ */
+function logEndingOn7NumbersTill1000() {
+    for (let curr = 7; curr <= 1000; curr += 10) {
+        console.log(curr);
+    }
+}
+
+/**
+ * 23 - Numbers up to 1000, ending in n
+ * @param {number} endingOn
+ */
+function logEndingOnNNumbersTill1000(endingOn) {
+    for (let curr = endingOn; curr <= 1000; curr += 10) {
+        console.log(curr);
+    }
+}
+
+/**
+ * 24 - Encoding
+ * @param {number} input
+ */
+function logEncoding(input) {
+    if (input === 0) {
+        console.log("ZERO");
+        return;
+    }
+    while (input !== 0) {
+        const digit = input % 10;
+        input = Math.floor(input / 10);
+        if (digit === 0) {
+            console.log("ZERO");
+        } else {
+            console.log(String.fromCharCode(33 + digit).repeat(digit));
+        }
+    }
+}
+
+/**
+ * 25 - Coins and Notes
+ * @param {number} levCount
+ * @param {number} twoLevCount
+ * @param {number} fiveLevCount
+ * @param {number} neededSum
+ */
+function logMoneyCombinations(levCount, twoLevCount, fiveLevCount, neededSum) {
+    for (let oneLev = 0; oneLev <= levCount; oneLev++) {
+        for (let twoLev = 0; twoLev <= twoLevCount; twoLev++) {
+            for (let fiveLev = 0; fiveLev <= fiveLevCount; fiveLev++) {
+                const curr = oneLev + twoLev * 2 + fiveLev * 5;
+                if (curr === neededSum) {
+                    console.log(
+                        `${oneLev} * 1 lv. + ${twoLev} * 2 lv. + ${fiveLev} * 5 lv. = ${neededSum} lv.`
+                    );
+                }
+            }
+        }
+    }
+}
+
+/**
+ * 26 - Even Pairs
+ * @param {number} startFstPair Start of first pair
+ * @param {number} startSndPair Start of second pair
+ * @param {number} diffFstPair Difference with end of first pair
+ * @param {number} diffSndPair Difference with end of second pair
+ */
+function logEvenPairsNumbers(
+    startFstPair,
+    startSndPair,
+    diffFstPair,
+    diffSndPair
+) {
+    for (
+        let fstPair = startFstPair;
+        fstPair <= startFstPair + diffFstPair;
+        fstPair++
+    ) {
+        if (!isPrime(fstPair)) {
+            continue;
+        }
+        for (
+            let sndPair = startSndPair;
+            sndPair <= startSndPair + diffSndPair;
+            sndPair++
+        ) {
+            if (!isPrime(sndPair)) {
+                continue;
+            }
+            console.log(`${fstPair}${sndPair}`);
+        }
+    }
+}
+
+/**
+ * Helper function for "26 - Even Pairs"
+ * @param {number} num
+ * @returns {boolean}
+ */
+function isPrime(num) {
+    if (num <= 1) {
+        return false;
+    }
+    const max = Math.ceil(num / 2);
+    for (let i = 2; i < max; i++) {
+        if (num % i === 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+/**
+ * 27 - Change
+ * @param {number} money Amount of money
+ */
+function logCoinCount(money) {
+    let coinCount = 0;
+    money *= 100;
+    while (money >= 200) {
+        money -= 200;
+        coinCount++;
+    }
+    while (money >= 100) {
+        money -= 100;
+        coinCount++;
+    }
+    while (money >= 50) {
+        money -= 50;
+        coinCount++;
+    }
+    while (money >= 20) {
+        money -= 20;
+        coinCount++;
+    }
+    while (money >= 10) {
+        money -= 10;
+        coinCount++;
+    }
+    while (money >= 5) {
+        money -= 5;
+        coinCount++;
+    }
+    while (money >= 2) {
+        money -= 2;
+        coinCount++;
+    }
+    while (money >= 1) {
+        money -= 1;
+        coinCount++;
+    }
+    console.log(coinCount);
+}
+
+/**
+ * 28 - Pyramid of numbers
+ * @param {number} input
+ */
+function logNumberPyramid(input) {
+    for (let curr = 1, row = 1; curr <= input; row++) {
+        let sequence = "";
+        for (let col = 0; col < row && curr <= input; col++) {
+            sequence += curr;
+            if (col + 1 < row) {
+                sequence += " ";
+            }
+            curr++;
+        }
+        console.log(sequence);
+    }
+}
