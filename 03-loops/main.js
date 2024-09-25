@@ -470,7 +470,7 @@ function isPrime(num) {
         return false;
     }
     const max = Math.ceil(num / 2);
-    for (let i = 2; i < max; i++) {
+    for (let i = 2; i <= max; i++) {
         if (num % i === 0) {
             return false;
         }
@@ -535,5 +535,351 @@ function logNumberPyramid(input) {
             curr++;
         }
         console.log(sequence);
+    }
+}
+
+/**
+ * 29 - Unique codes
+ * @param {number} fstLimit Upper limit of first digit
+ * @param {number} sndLimit Upper limit of second digit
+ * @param {number} trdLimit Upper limit of third digit
+ */
+function logUniqueCodes(fstLimit, sndLimit, trdLimit) {
+    for (let fstDigit = 2; fstDigit <= fstLimit; fstDigit += 2) {
+        for (
+            let sndDigit = 2;
+            sndDigit <= sndLimit && sndDigit <= 7;
+            sndDigit++
+        ) {
+            for (let trdDigit = 2; trdDigit <= trdLimit; trdDigit += 2) {
+                if (!isPrime(sndDigit)) {
+                    break;
+                }
+                console.log(`${fstDigit}${sndDigit}${trdDigit}`);
+            }
+        }
+    }
+}
+
+/**
+ * 30 - Square of Asterisks
+ * @param {number} size Size of square
+ */
+function logSquareOfAsterisks(size) {
+    const side = "*".repeat(size);
+    for (let row = 0; row < size; row++) {
+        console.log(side);
+    }
+}
+
+/**
+ * 31 - Half-Rhombus from asterisks
+ * @param {number} size
+ */
+function logHalfRhombus(size) {
+    for (let row = 1; row <= size; row++) {
+        console.log("*".repeat(row));
+    }
+    for (let row = size - 1; row > 0; row--) {
+        console.log("*".repeat(row));
+    }
+}
+
+/**
+ * 32 - Rhombus from asterisks
+ * @param {number} size
+ */
+function logRhombus(size) {
+    for (let row = 1; row <= size; row++) {
+        console.log(`${" ".repeat(size - row)}${"* ".repeat(row)}`);
+    }
+    for (let row = size - 1; row > 0; row--) {
+        console.log(`${" ".repeat(size - row)}${"* ".repeat(row)}`);
+    }
+}
+
+/**
+ * 33 - Tree Pattern
+ * @param {number} height
+ */
+function logTree(height) {
+    for (
+        let row = 1, asterixCount = 1;
+        row <= height;
+        row++, asterixCount += 2
+    ) {
+        console.log(`${" ".repeat(height - row)}${"*".repeat(asterixCount)}`);
+    }
+    console.log(`${" ".repeat(height - 1)}*`);
+}
+
+/**
+ * 34 - Square frame
+ * @param {number} side The size of the side
+ */
+function logSquareFrame(side) {
+    if (side < 2) {
+        console.error("Can't log square frame with side <2");
+        return;
+    }
+    console.log(`+ ${"- ".repeat(side - 2)}+`);
+    for (let row = 2; row < side; row++) {
+        console.log(`| ${"- ".repeat(side - 2)}|`);
+    }
+    console.log(`+ ${"- ".repeat(side - 2)}+`);
+}
+
+/**
+ * 35 - Christmas Tree
+ * @param {number} height
+ */
+function logChristmasTree(height) {
+    for (let row = 0, asterixCount = 0; row <= height; row++, asterixCount++) {
+        console.log(
+            `${" ".repeat(height - row)}${"*".repeat(
+                asterixCount
+            )} | ${"*".repeat(asterixCount)}`
+        );
+    }
+}
+
+/**
+ * 36 - Sunglasses
+ * @param {number} height
+ */
+function logSunglasses(height) {
+    console.log(
+        `${"*".repeat(2 * height)}${" ".repeat(height)}${"*".repeat(
+            2 * height
+        )}`
+    );
+    for (let row = 2; row < height; row++) {
+        if (row === Math.ceil(height / 2)) {
+            console.log(
+                `*${"/".repeat(2 * height - 2)}*${"|".repeat(
+                    height
+                )}*${"/".repeat(2 * height - 2)}*`
+            );
+            continue;
+        }
+        console.log(
+            `*${"/".repeat(2 * height - 2)}*${" ".repeat(height)}*${"/".repeat(
+                2 * height - 2
+            )}*`
+        );
+    }
+
+    console.log(
+        `${"*".repeat(2 * height)}${" ".repeat(height)}${"*".repeat(
+            2 * height
+        )}`
+    );
+}
+
+/**
+ * 37 - House Pattern
+ * @param {number} baseSize
+ */
+function logHousePattern(baseSize) {
+    const start = baseSize % 2 === 0 ? 2 : 1;
+    for (
+        let asterixCount = start;
+        asterixCount <= baseSize;
+        asterixCount += 2
+    ) {
+        console.log(
+            `${" ".repeat(baseSize - asterixCount)}${"* ".repeat(asterixCount)}`
+        );
+    }
+    console.log(`* ${"  ".repeat(baseSize - 2)}*`);
+    console.log(`* ${"  ".repeat(baseSize - 2)}*`);
+}
+
+/**
+ * 38 - Pyramid with Increasing Digits
+ * @param {number} height
+ */
+function logPyramidWithIncreasingDigit(height) {
+    for (let row = 1; row <= height; row++) {
+        let digit = row;
+        let rowSequence = "";
+        for (let col = 0; col < row; col++, digit++) {
+            rowSequence += digit;
+        }
+        digit -= 2;
+        for (let col = row - 1; col > 0; col--, digit--) {
+            rowSequence += digit;
+        }
+        console.log(`${" ".repeat(height - row)}${rowSequence}`);
+    }
+}
+
+/**
+ * 39 - Arrow Pattern
+ * @param {number} rowsCount
+ */
+function logArrowPattern(rowsCount) {
+    for (
+        let row = 1, asterixCount = 1;
+        row < rowsCount;
+        row++, asterixCount++
+    ) {
+        console.log(
+            `${" ".repeat(rowsCount - row)}${"* ".repeat(asterixCount)}`
+        );
+    }
+    let whiteSpaces = 0;
+    if (rowsCount % 2 === 0) {
+        whiteSpaces = Math.floor(rowsCount / 2);
+    } else {
+        whiteSpaces = Math.floor(rowsCount / 2) + 1;
+    }
+    for (let row = 1; row < rowsCount; row++) {
+        console.log(`${" ".repeat(whiteSpaces)}${"*".repeat(rowsCount - 1)}`);
+    }
+}
+
+/**
+ * 40 - Staircase Pattern
+ * @param {number} baseSize
+ */
+function logStaircasePattern(baseSize) {
+    for (let row = 1, whiteSpaces = 1; row <= baseSize; row++) {
+        if (row > 3) {
+            whiteSpaces += row - 2;
+        }
+        console.log(
+            `${" ".repeat(row > 2 ? whiteSpaces : 0)}${"#".repeat(row)}`
+        );
+    }
+}
+
+/**
+ * 41 - Hourglass Pattern
+ * @param {number} size
+ */
+function logHourglass(size) {
+    console.log("#".repeat(size + 2));
+    let whiteSpaces = size - 2;
+    for (let row = 1; row < Math.ceil(size / 2); row++, whiteSpaces -= 2) {
+        console.log(`${" ".repeat(row)}#${" ".repeat(whiteSpaces)}#`);
+    }
+    whiteSpaces += 2;
+    console.log(`${" ".repeat(Math.ceil(size / 2))}${"#".repeat(whiteSpaces)}`);
+    for (let row = Math.ceil(size / 2) - 1; row >= 1; row--, whiteSpaces += 2) {
+        console.log(`${" ".repeat(row)}#${" ".repeat(whiteSpaces)}#`);
+    }
+    console.log("#".repeat(size + 2));
+}
+
+/**
+ * 42 - Left Arrow Pattern
+ * @param {number} size
+ */
+function logLeftArrow(size) {
+    for (let row = 1; row < size; row++) {
+        console.log(`${" ".repeat(size - row)}${"*".repeat(row)}`);
+    }
+    for (let row = size - 2; row > 0; row--) {
+        console.log(`${" ".repeat(size - row)}${"*".repeat(row)}`);
+    }
+}
+
+/**
+ * 43 - Pyramid of numbers Same as 28
+ * @see logNumberPyramid(input)
+ */
+
+/**
+ * 44 - Alternative conditions
+ * @param {number} input
+ * @see logNumberPyramid(input) for non reversed
+ */
+function logReversedNumberPyramid(input) {}
+
+/**
+ * 45 - Equal sum of odd and even positions
+ * @param {number} from
+ * @param {number} to
+ */
+function logNumsWithEqualSumOddEvenIndexes(from, to) {
+    let hasSpecialNum = false;
+    for (let curr = from; curr <= to; curr++) {
+        let temp = curr;
+        let evenSum = 0;
+        let oddSum = 0;
+        for (let index = 0; temp !== 0; index++) {
+            if (index % 2 === 0) {
+                evenSum += temp % 10;
+            } else {
+                oddSum += temp % 10;
+            }
+            temp = Math.floor(temp / 10);
+        }
+        if (evenSum === oddSum) {
+            console.log(curr);
+            hasSpecialNum = true;
+        }
+    }
+    if (!hasSpecialNum) {
+        console.log("None");
+    }
+}
+
+/**
+ * 46 - Password Generator
+ * @param {number} maxDigitInd
+ * @param {number} maxLetterInd
+ */
+function logGeneratedPasswords(maxDigitInd, maxLetterInd) {
+    for (let fstSymbol = 1; fstSymbol <= maxDigitInd; fstSymbol++) {
+        for (let sndSymbol = 1; sndSymbol <= maxDigitInd; sndSymbol++) {
+            for (let trdSymbol = 0; trdSymbol < maxLetterInd; trdSymbol++) {
+                for (
+                    let forthSymbol = 0;
+                    forthSymbol < maxLetterInd;
+                    forthSymbol++
+                ) {
+                    for (
+                        let fifthSymbol = Math.max(fstSymbol, sndSymbol) + 1;
+                        fifthSymbol <= maxDigitInd;
+                        fifthSymbol++
+                    ) {
+                        const letterACode = "a".charCodeAt(0);
+                        const trdLetter = String.fromCharCode(
+                            letterACode + trdSymbol
+                        );
+                        const forthLetter = String.fromCharCode(
+                            letterACode + forthSymbol
+                        );
+                        console.log(
+                            `${fstSymbol}${sndSymbol}${trdLetter}${forthLetter}${fifthSymbol}`
+                        );
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+ * 47 - Special numbers
+ * @param {number} input
+ */
+function logSpecialNumbers(input) {
+    for (let curr = 1111; curr < 9999; curr++) {
+        let temp = curr;
+        let isSpecial = true;
+        while (temp !== 0) {
+            const digit = temp % 10;
+            temp = Math.floor(temp / 10);
+            if (input % digit !== 0) {
+                isSpecial = false;
+                break;
+            }
+        }
+        if (isSpecial) {
+            console.log(curr);
+        }
     }
 }
