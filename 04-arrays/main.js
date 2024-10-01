@@ -329,4 +329,3 @@ function logLongestIdenticalSeq(line) {
     }
     console.log(sequences[resIndex].join(" "));
 }
-
