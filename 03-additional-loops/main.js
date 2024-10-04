@@ -492,3 +492,41 @@ function pattern30(rowCount) {
 }
 
 //* Move straight to figure patterns
+/**
+ * Figure 1 - rectangle of #s
+ * @param {number} rowCount
+ */
+function figure1(rowCount) {
+    for (let rowInd = 0; rowInd < rowCount; rowInd++) {
+        console.log("# ".repeat(5));
+    }
+}
+
+//* Move straight to figure patterns
+/**
+ * Figure 2 and 3 - rectangle of zig zagged #s
+ * @param {number} rowCount
+ */
+function figure2(rowCount) {
+    for (let rowInd = 0; rowInd < rowCount; rowInd++) {
+        console.log(`${rowInd % 2 !== 0 ? " " : ""}${"# ".repeat(5)}`);
+    }
+}
+
+function figure4(rowCount) {
+    let line = "* | ";
+    for (let rowInd = 1; rowInd <= rowCount; rowInd++) {
+        line += `${rowInd} `;
+    }
+    console.log(line);
+
+    for (let rowInd = 1; rowInd <= rowCount; rowInd++) {
+        line = `${rowInd} | `;
+        for (let colInd = 1; colInd <= rowCount; colInd++) {
+            line += `${rowInd * colInd} `;
+        }
+        console.log(line);
+    }
+}
+
+//!End of file
