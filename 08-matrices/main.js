@@ -599,7 +599,6 @@ function getExcelRangeCoords(range) {
 //     "A1:C4"
 // );
 
-//TODO THINK OF ADDING CORNERS TO OBJ
 /**
  * 16 - Matrix Border Flip
  * @param {string [] } input
@@ -608,13 +607,236 @@ function rotateMatrixBorder(input) {
     let matrix = input.map((row) => row.split(" "));
     let rowCount = matrix.length;
     let colCount = matrix[0].length;
+
     let buffer = matrix[0][0];
+    //* Top to bottom row, first col
     for (let row = 0; row < rowCount - 1; row++) {
-        matrix[row][0] = matrix[row + 1][0];
+        let next = matrix[row + 1][0];
+        matrix[row][0] = next;
     }
 
-    buffer = matrix[rowCount - 1][colCount - 1];
-    for (let row = rowCount - 1; row >= 1; row--) {
-        matrix[row][colCount - 1] = matrix[row - 1][colCount - 1];
+    //* Left to right col, first row
+    for (let col = 1; col < colCount; col++) {
+        let prev = matrix[0][col];
+        matrix[0][col] = buffer;
+        buffer = prev;
     }
+
+    //* Top to bottom row, last col
+    for (let row = 1, col = colCount - 1; row < rowCount; row++) {
+        let prev = matrix[row][col];
+        matrix[row][col] = buffer;
+        buffer = prev;
+    }
+
+    //* Right to left col, last row
+    for (let row = rowCount - 1, col = colCount - 2; col >= 0; col--) {
+        let prev = matrix[row][col];
+        matrix[row][col] = buffer;
+        buffer = prev;
+    }
+
+    printMatrix(matrix);
 }
+
+// rotateMatrixBorder(["1 2 3", "4 5 6", "7 8 9"]);
+// console.log("");
+// rotateMatrixBorder(["0 1 0 0", "0 0 0 1", "1 0 0 0", "0 1 0 0"]);
+
+/**
+ * 17 - Magic Square Checker
+ * @param {string[]} input
+ * @returns {boolean}
+ */
+function isMagicSquare(input) {
+    let matrix = input.map((row) => row.split(" ").map((col) => Number(col)));
+    let firstRowSum = matrix[0].reduce((sum, curr) => sum + curr, 0);
+
+    if (!areRowSumsEqual(matrix, firstRowSum)) {
+        return false;
+    }
+    if (!areColSumsEqual(matrix, firstRowSum)) {
+        return false;
+    }
+
+    if (!isMainDiagSumEqual(matrix, firstRowSum)) {
+        return false;
+    }
+    if (!isSecondaryDiagSumEqual(matrix, firstRowSum)) {
+        return false;
+    }
+    return true;
+}
+
+/**
+ * @see {@link isMagicSquare}
+ * @param {number[][]} matrix
+ * @param {number} sumToCheck
+ * @returns {boolean}
+ */
+function isSecondaryDiagSumEqual(matrix, sumToCheck) {
+    let currSum = 0;
+    for (
+        let row = matrix.length - 1, col = 0;
+        col < matrix[0].length && row < matrix.length;
+        row--, col++
+    ) {
+        currSum += matrix[row][row];
+    }
+    return currSum === sumToCheck;
+}
+
+/**
+ * @see {@link isMagicSquare}
+ * @param {number[][]} matrix
+ * @param {number} sumToCheck
+ * @returns {boolean}
+ */
+function isMainDiagSumEqual(matrix, sumToCheck) {
+    let currSum = 0;
+    for (let row = 0; row < matrix.length; row++) {
+        currSum += matrix[row][row];
+    }
+    return currSum === sumToCheck;
+}
+
+/**
+ * @see {@link isMagicSquare}
+ *
+ * @param {number[][]} matrix
+ * @param {number} sumToCheck
+ * @returns {boolean}
+ */
+function areRowSumsEqual(matrix, sumToCheck) {
+    for (let row = 1; row < matrix.length; row++) {
+        let currSum = matrix[row].reduce((sum, curr) => sum + curr, 0);
+        if (currSum !== sumToCheck) {
+            return false;
+        }
+    }
+    return true;
+}
+
+/**
+ * @see {@link isMagicSquare}
+ * @param {number[][]} matrix
+ * @param {number} sumToCheck
+ * @returns {boolean}
+ */
+function areColSumsEqual(matrix, sumToCheck) {
+    for (let col = 0; col < matrix[0].length; col++) {
+        let currSum = 0;
+        for (let row = 0; row < matrix.length; row++) {
+            currSum += matrix[row][col];
+        }
+        if (currSum !== sumToCheck) {
+            return false;
+        }
+    }
+    return true;
+}
+
+// let matrix1 = ["1 2 3", "4 5 6", "7 8 9"];
+// let matrix2 = ["1 0 0 0", "0 0 0 1", "0 1 0 0", "0 0 1 0"];
+// let matrix3 = ["8 1 6", "3 5 7", "4 9 2"];
+// console.log(isMagicSquare(matrix1));
+// console.log(isMagicSquare(matrix2));
+// console.log(isMagicSquare(matrix3));
+
+//TODO 18 - Spiral Matrix Traversal
+
+/**
+ * 19 - Checkerboard Pattern
+ * @param {number} size
+ * @returns {number[][]}
+ */
+function getCheckBoard(size) {
+    let evenRow = [];
+    for (let col = 0; col < size; col++) {
+        evenRow.push(col % 2 === 0 ? 0 : 1);
+    }
+    let oddRow = [];
+    for (let col = 0; col < size; col++) {
+        oddRow.push(col % 2 === 0 ? 1 : 0);
+    }
+
+    let checkboard = [];
+    for (let row = 0; row < size; row++) {
+        if (row % 2 === 0) {
+            checkboard.push([...evenRow]);
+        } else {
+            checkboard.push([...oddRow]);
+        }
+    }
+    return checkboard;
+}
+// printMatrix(getCheckBoard(3));
+// console.log("");
+
+// printMatrix(getCheckBoard(4));
+
+/**
+ * 20 - Maximal Sum
+ * @param {string[]} input
+ */
+function maximumSumOf3By3SubMatrix(input) {
+    let sum = Number.MIN_SAFE_INTEGER;
+    let matrix = input.map((row) => row.split(" ").map((col) => Number(col)));
+    let resultMatrix = [];
+    for (let row = 0; row < matrix.length - 2; row++) {
+        for (let col = 0; col < matrix[row].length - 2; col++) {
+            let curr = getSumAndMatrix3By3(matrix, row, col);
+            if (curr.sum > sum) {
+                sum = curr.sum;
+                resultMatrix = curr.matrix;
+            }
+        }
+    }
+    console.log(`Sum = ${sum}`);
+    printMatrix(resultMatrix);
+}
+
+/**
+ * Helper function for {@link maximumSumOf3By3SubMatrix}
+ * @param {number[][]} matrix
+ * @param {number} startRow
+ * @param {number} startCol
+ * @returns {{sum:number,matrix:number[][]}}
+ */
+function getSumAndMatrix3By3(matrix, startRow, startCol) {
+    /** @type {{sum:number,matrix:number[][]}} */
+    let result = {
+        sum: 0,
+        matrix: [],
+    };
+    for (
+        let row = startRow, rowCount = 0;
+        row < matrix.length && rowCount < 3;
+        row++, rowCount++
+    ) {
+        result.matrix.push(matrix[row].slice(startCol, startCol + 3));
+        for (
+            let col = startCol, colCount = 0;
+            col < matrix[row].length && colCount < 3;
+            col++, colCount++
+        ) {
+            result.sum += matrix[row][col];
+        }
+    }
+    return result;
+}
+// maximumSumOf3By3SubMatrix([
+//     "1 5 5 2 4",
+//     "2 1 4 14 3",
+//     "3 7 11 2 8",
+//     "4 8 12 16 4",
+// ]);
+// console.log("");
+
+// maximumSumOf3By3SubMatrix([
+//     "1 0 4 3 1 1",
+//     "1 3 1 3 0 4",
+//     "6 4 1 2 5 6",
+//     "2 2 1 5 4 1",
+//     "3 3 3 6 0 5",
+// ]);
