@@ -840,3 +840,56 @@ function getSumAndMatrix3By3(matrix, startRow, startCol) {
 //     "2 2 1 5 4 1",
 //     "3 3 3 6 0 5",
 // ]);
+
+/**
+ *
+ * @param {number} number
+ */
+function printLetterM(number) {
+    for (let row = 1; row <= number; row++) {
+        let line = "";
+        for (let value = 1; value <= row; value++) {
+            line += value;
+        }
+        line += " ".repeat(Math.max((number - row) * 2 - 1, 0));
+        let reversedLine = "";
+        let reversedLength = row === number ? row - 1 : row;
+        for (let value = 1; value <= reversedLength; value++) {
+            reversedLine = `${value}${reversedLine}`;
+        }
+        console.log(`${line}${reversedLine}`);
+    }
+}
+printLetterM(5);
+
+/**
+ *
+ * @param {number} number
+ */
+function printLetterMWithArr(number) {
+    // Another option, but it's slower
+    // let arr = [...Array(number).keys()].map((i) => i + 1);
+    let arr = [];
+    for (let value = 1; value <= number; value++) {
+        arr.push(value);
+    }
+
+    for (let row = 1; row <= number; row++) {
+        let currArr = arr.slice(0, row);
+        if (row !== number) {
+            console.log(
+                `${currArr.join("")}${" ".repeat(
+                    Math.max((number - row) * 2 - 1, 0)
+                )}${currArr.reverse().join("")}`
+            );
+        } else {
+            let line = `${currArr.join("")}${" ".repeat(
+                Math.max((number - row) * 2 - 1, 0)
+            )}`;
+            currArr.pop();
+            console.log(`${line}${currArr.reverse().join("")}`);
+        }
+    }
+}
+
+printLetterMWithArr(5);
