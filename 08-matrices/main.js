@@ -413,6 +413,7 @@ function rotateMatrix(input) {
 function getExcelColNumber(column) {
     let colAsNumber = 0;
     const letterACode = "A".charCodeAt(0);
+    // @ts-ignore
     const lettersCount = 26;
     for (
         let index = column.length - 1, power = 0;
@@ -860,7 +861,7 @@ function printLetterM(number) {
         console.log(`${line}${reversedLine}`);
     }
 }
-printLetterM(5);
+// printLetterM(5);
 
 /**
  *
@@ -892,4 +893,14 @@ function printLetterMWithArr(number) {
     }
 }
 
-printLetterMWithArr(5);
+// printLetterMWithArr(5);
+function drawM(rows) {
+    const rowLength = rows * 2 - 1;
+    const row = [...' '.repeat(rowLength)];
+
+    for (let i = 1; i <= rows; i++) {
+            row[i - 1] = i;
+            row[rowLength - i] = i;
+            console.log(row.join(''));
+        }
+}
