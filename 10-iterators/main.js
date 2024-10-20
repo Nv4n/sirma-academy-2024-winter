@@ -321,3 +321,240 @@ function* ChainedGenerator() {
 // console.log([...ChainGenerator(ChainedGenerator())].join(", "));
 
 //15 - Queue Iterator
+/**
+ *
+ * @param {any[]} arr
+ */
+function QueueIterator(arr) {
+    let cloned = [...arr];
+    let ind = 0;
+    return {
+        next: () => {
+            if (ind < cloned.length) {
+                return { value: cloned[ind++], done: false };
+            } else {
+                return { value: undefined, done: true };
+            }
+        },
+        [Symbol.iterator]() {
+            return this;
+        },
+    };
+}
+
+// let queuing = new QueueIterator([1, 2, 3]);
+// console.log([...queuing].join(", "));
+
+//16 - Stack Generator
+
+/**
+ *
+ * @param {any[]} arr
+ */
+function* StackGenerator(arr) {
+    let cloned = [...arr];
+
+    for (let ind = cloned.length - 1; ind >= 0; ind--) {
+        yield cloned[ind];
+    }
+}
+
+// let stackGen = StackGenerator([1, 2, 3]);
+// console.log([...stackGen].join(", "));
+
+//17 - Slice Iterator
+
+/**
+ *
+ * @param {any[]} arr
+ * @param {number} start
+ * @param {number} end
+ */
+function SliceIterator(arr, start, end) {
+    let cloned = arr.slice(start, end + 1);
+    let ind = 0;
+    return {
+        next: () => {
+            if (ind < cloned.length) {
+                return { value: cloned[ind++], done: false };
+            } else {
+                return { value: undefined, done: true };
+            }
+        },
+        [Symbol.iterator]() {
+            return this;
+        },
+    };
+}
+
+// let arr = [1, 2, 3, 4, 5];
+// let sliceIterator = SliceIterator(arr, 1, 3);
+
+// console.log([...sliceIterator].join(", "));
+// console.log(arr);
+
+//18 - Repeat Generator
+
+/**
+ *
+ * @param {any} value
+ * @param {number} repeat
+ */
+function* RepeatGenerator(value, repeat) {
+    for (let ind = 0; ind < repeat; ind++) {
+        yield value;
+    }
+}
+
+// let repeated = RepeatGenerator(2, 3);
+// console.log([...repeated].join(", "));
+
+//19 - Pattern Generator
+
+/**
+ *
+ * @param {any[]} pattern
+ * @param {number} repeat
+ */
+function* PatternGenerator(pattern, repeat) {
+    for (let ind = 0; ind < repeat; ind++) {
+        yield pattern;
+    }
+}
+
+// let repeated = PatternGenerator([1, 2, 3], 2);
+// console.log([...repeated].join(", "));
+
+//20 - Decimal to Binary Converter
+
+/**
+ *
+ * @param {number} value
+ * @returns {string}
+ */
+function toBinary(value) {
+    let binary = "";
+    if (value === 0) {
+        return "0";
+    }
+    while (value > 0) {
+        let currDigit = value % 2;
+        binary = `${currDigit}${binary}`;
+        value = Math.floor(value / 2);
+    }
+    return binary;
+}
+
+// console.log(toBinary(6));
+
+//21 - Map Iterator
+
+/**
+ *
+ * @param {Map} map
+ */
+function MapIterator(map) {
+    let keyValues = map.entries();
+    return {
+        next: () => {
+            let curr = keyValues.next();
+            if (!curr.done) {
+                return {
+                    value: `${curr.value[0]}-${curr.value[1]}`,
+                    done: false,
+                };
+            } else {
+                return { value: undefined, done: true };
+            }
+        },
+        [Symbol.iterator]() {
+            return this;
+        },
+    };
+}
+
+// let mapData = new Map([
+//     [1, "a"],
+//     [2, "b"],
+//     [3, "c"],
+// ]);
+// let mapIterator = MapIterator(mapData);
+// console.log([...mapIterator].join(", "));
+
+//22 - Set Comprehension
+
+/**
+ * @generator
+ * @template T
+ * @param {Set<T>} set
+ * @param {(val:T)=>T} func
+ */
+function* SetComprehension(set, func) {
+    let newVals = [...set.values()].map(func);
+    yield new Set(newVals);
+}
+
+// let set = new Set([1, 2, 3, 4, 5]);
+// let setComprehension = SetComprehension(set, (x) => x * 2);
+
+// console.log([...setComprehension.next().value].join(", "));
+// console.log(set);
+
+//23 - Value Transformation Generator
+
+/**
+ * @template T
+ * @param {T[]} arr
+ * @param {(T)=>any} transform
+ */
+function* ValueTransformGen(arr, transform) {
+    let cloned = [...arr];
+    for (let ind = 0; ind < cloned.length; ind++) {
+        yield transform(cloned[ind]);
+    }
+}
+
+// let arr = [1, 2, 3];
+// let transformator = ValueTransformGen(arr,(x)=>x*2);
+// console.log([...transformator].join(", "));
+
+//24 - Pagination Iterator
+
+/**
+ * @template T
+ * @param {T[]} arr
+ * @param {number} pageSize
+ */
+function PaginationIterator(arr, pageSize) {
+    let cloned = [...arr];
+    let start = 0;
+    let end = pageSize;
+    let page = 1;
+    return {
+        next: () => {
+            if (start < cloned.length) {
+                let copy = cloned.slice(start, end);
+                start = end;
+                end += pageSize;
+
+                return { value: { page: page++, values: copy }, done: false };
+            } else {
+                return { value: undefined, done: true };
+            }
+        },
+        [Symbol.iterator]() {
+            return this;
+        },
+    };
+}
+
+// let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// let paginated = PaginationIterator(arr, 3);
+// console.log(
+//     [...paginated]
+//         .reduce(
+//             (output, curr) => `${output}, page ${curr.page}: ${curr.values}`,
+//             ""
+//         )
+//         .replace(", ", "")
+// );
