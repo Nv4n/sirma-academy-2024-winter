@@ -214,3 +214,81 @@ function phoneMatcher(phoneRegister) {
 // phoneMatcher(
 //     "+359 2 357 3351 +359 2 22 2222 +359 2 173 3408 +359-2-789-2584 +359 2 193 3953 +359-2-961-0248 +359-2-789-2584 +359 2 222 222 +360 2 222 2222 +359 2 727 9740 +359-2-854-2280 +359 2 193 3953 +359 2 357 3351 +359 2 558 8560 +359 2 222 222"
 // );
+
+/**
+ * 14 - Match Dates
+ * @param {string} dateRegister
+ */
+function dateMatcher(dateRegister) {
+    const matches = dateRegister.matchAll(
+        /\b(?<day>\d{2})([-.\/])(?<month>[A-Z][a-z]{2})\2(?<year>\d{4})\b/g
+    );
+    const dates = [...matches].map((el) => el.groups);
+    dates.forEach((date) => {
+        if (!date) {
+            return;
+        }
+        console.log(
+            `Day: ${date["day"]}, Month: ${date["month"]}, Year: ${date["year"]}`
+        );
+    });
+}
+
+// dateMatcher(
+//     "13/Jul/1928, 10-Nov-1934, 01/Jan-1951, 25.Dec.1937, 23#09#1973, 1/Feb/2016"
+// );
+// console.log("");
+// dateMatcher("1/Jan-1951 23/October/197 11-Dec-2010 18.Jan.2014");
+
+/**
+ * 15 - Star Battles Enigma
+ * @param {string[]} enigmas
+ */
+function starBattles(enigmas) {
+    let decrypted = enigmas.map(decryptEnigma);
+    let msgRegx =
+        /([^\-@!:>]*)@(?<planet>[a-zA-Z]+)([^\-@!:>]*):(?<population>\d+)([^\-@!:>]*)!(?<attack>A|D)!([^\-@!:>]*)->(?<soldiers>\d+)([^\-@!:>]*)/;
+
+    let commands = decrypted
+        .map((msg) => {
+            return msgRegx.exec(msg)?.groups;
+        })
+        .filter((el) => !!el);
+
+    let attacked = [];
+    let destroyed = [];
+    for (const cmd of commands) {
+        if (cmd["attack"] === "A") {
+            attacked.push(cmd["planet"]);
+        } else {
+            destroyed.push(cmd["planet"]);
+        }
+    }
+    console.log(`Attacked planets: ${attacked.length}`);
+    attacked.forEach((p) => console.log(`-> ${p}`));
+    console.log(`Destroyed planets: ${destroyed.length}`);
+    destroyed.forEach((p) => console.log(`-> ${p}`));
+}
+
+/**
+ * @see {@link starBattles}
+ * @param {string} cypher
+ * @returns {string}
+ */
+function decryptEnigma(cypher) {
+    const decryptRegx = /[star]/gi;
+    const matches = cypher.matchAll(decryptRegx);
+    const count = [...matches].length;
+    return cypher
+        .split("")
+        .map((el) => String.fromCharCode(el.charCodeAt(0) - count))
+        .join("");
+}
+
+starBattles(["STCDoghudd4=53333$D$0A53333", "EHfsytsnhf?8555&I&2C9555SR"]);
+console.log("");
+starBattles([
+    "tt(''DGsvywgerx>6444444444%H%1B9444",
+    "GQhrr|A977777(H(TTTT",
+    "EHfsytsnhf?8555&I&2C9555SR",
+]);
