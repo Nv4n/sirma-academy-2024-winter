@@ -1,1 +1,2 @@
 Git is fun!
+Learning new commands
