@@ -77,11 +77,11 @@ function getHashTags(text) {
     }
 }
 
-// getHashTags("Everyone uses # to tag a #special word in #facebook");
-// console.log("");
-// getHashTags(
-//     "The symbol # is known #variously in English-speaking #regions as the #number sign"
-// );
+getHashTags("Everyone uses # to tag a #special word in #facebook");
+console.log("");
+getHashTags(
+    "The symbol # is known #variously in English-speaking #regions as the #number sign"
+);
 
 /**
  * 06 - Extract File
@@ -101,9 +101,9 @@ function extractFile(dir) {
     console.log(`File extension: ${match.groups["extension"]}`);
 }
 
-// extractFile("C:\\desktop\\academy\\template.pptx");
-// console.log("");
-// extractFile("C:\\Projects\\website.folder\\file.name.js");
+extractFile("C:\\desktop\\academy\\template.pptx");
+console.log("");
+extractFile("C:\\Projects\\website.folder\\file.name.js");
 
 /**
  * 07 - Substring
@@ -285,10 +285,10 @@ function decryptEnigma(cypher) {
         .join("");
 }
 
-starBattles(["STCDoghudd4=53333$D$0A53333", "EHfsytsnhf?8555&I&2C9555SR"]);
-console.log("");
-starBattles([
-    "tt(''DGsvywgerx>6444444444%H%1B9444",
-    "GQhrr|A977777(H(TTTT",
-    "EHfsytsnhf?8555&I&2C9555SR",
-]);
+// starBattles(["STCDoghudd4=53333$D$0A53333", "EHfsytsnhf?8555&I&2C9555SR"]);
+// console.log("");
+// starBattles([
+//     "tt(''DGsvywgerx>6444444444%H%1B9444",
+//     "GQhrr|A977777(H(TTTT",
+//     "EHfsytsnhf?8555&I&2C9555SR",
+// ]);
