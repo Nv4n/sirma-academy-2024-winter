@@ -17,9 +17,6 @@ function getOrderDecision(votes) {
                 votingScore--;
                 hasNonAbstain = true;
                 break;
-            case "abstain":
-                //stays the same
-                break;
         }
     }
 
