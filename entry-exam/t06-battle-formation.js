@@ -30,6 +30,11 @@ function printBattleFormation(initFormation, commands) {
                 cloned[fstIndex] = cloned[sndIndex];
                 cloned[sndIndex] = buffer;
             }
+        } else if (currCmd[0] === "add") {
+            let id = Number(currCmd[1]);
+            if (!cloned.some((el) => el === id)) {
+                cloned.push(id);
+            }
         }
     }
 }
