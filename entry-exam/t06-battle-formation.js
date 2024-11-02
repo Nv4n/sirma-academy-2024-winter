@@ -17,7 +17,20 @@ function printBattleFormation(initFormation, commands) {
             if (index >= 0 && index < cloned.length) {
                 cloned.splice(index, 1);
             }
-        } 
+        } else if (currCmd[0] === "swap") {
+            let fstIndex = Number(currCmd[1]);
+            let sndIndex = Number(currCmd[2]);
+            if (
+                fstIndex >= 0 &&
+                fstIndex < cloned.length &&
+                sndIndex >= 0 &&
+                sndIndex < cloned.length
+            ) {
+                let buffer = cloned[fstIndex];
+                cloned[fstIndex] = cloned[sndIndex];
+                cloned[sndIndex] = buffer;
+            }
+        }
     }
 }
 
