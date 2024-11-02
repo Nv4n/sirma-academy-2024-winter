@@ -6,5 +6,7 @@
         "markdown",
         "latex",
         "plaintext"
-    ]
+    ],
+    "workbench.startupEditor": "none",
+    "terminal.integrated.shellIntegration.enabled": false
 }
