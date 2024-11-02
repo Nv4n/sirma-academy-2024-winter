@@ -3,6 +3,7 @@
 /**
  * 02 - Order of the Phoenix Votes
  * @param {string[]} votes array of votes
+ * @returns {'Yes'|'No'|'Abstain'|'Tie'} Vote result message
  */
 function getOrderDecision(votes) {
     let votingScore = 0;
