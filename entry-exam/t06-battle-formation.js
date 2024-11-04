@@ -4,7 +4,7 @@
  * 06 - Auror Battle Formation
  * @param {number[]} initFormation
  * @param {string[]} commands
- * @returns {void} curr formation on each valid command
+ * @returns {void} current formation on each valid command
  */
 function printBattleFormation(initFormation, commands) {
     let cloned = [...initFormation];
