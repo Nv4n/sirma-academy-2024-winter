@@ -129,7 +129,8 @@ function executeDestroy(currCmd, formation) {
 function executeInsert(currCmd, formation) {
     let id = Number(currCmd[1]);
     let index = Number(currCmd[2]);
-    if (index >= 0 && index < formation.length) {
+    console.log(index)
+    if (index >= 0 && index <= formation.length) {
         return;
     }
     if (!formation.some((el) => el === id)) {
