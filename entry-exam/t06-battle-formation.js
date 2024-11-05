@@ -12,20 +12,19 @@ function printBattleFormation(initFormation, commands) {
     for (let ind = 0; ind < commands.length; ind++) {
         let currCmd = commands[ind].split(" ");
 
-        if (currCmd[0] === "destroy") {
+        if (currCmd[0] === "destroy" && currCmd.length === 2) {
             executeDestroy(currCmd, cloned);
-        } else if (currCmd[0] === "swap") {
+        } else if (currCmd[0] === "swap" && currCmd.length === 3) {
             executeSwap(currCmd, cloned);
-        } else if (currCmd[0] === "add") {
+        } else if (currCmd[0] === "add" && currCmd.length === 2) {
             executeAdd(currCmd, cloned);
-        } else if (currCmd[0] === "insert") {
+        } else if (currCmd[0] === "insert" && currCmd.length === 3) {
             executeInsert(currCmd, cloned);
-        } else if (currCmd[0] === "center") {
+        } else if (currCmd[0] === "center" && currCmd.length === 1) {
             executeCenter(cloned);
         }
     }
 }
-
 console.log("Example 01");
 printBattleFormation(
     [1, 2, 3, 4, 5],
@@ -129,7 +128,7 @@ function executeDestroy(currCmd, formation) {
 function executeInsert(currCmd, formation) {
     let id = Number(currCmd[1]);
     let index = Number(currCmd[2]);
-    console.log(index)
+    console.log(index);
     if (index >= 0 && index <= formation.length) {
         return;
     }
