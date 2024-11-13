@@ -1,0 +1,43 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+    width: 300px;
+}
+
+#todo-input {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#add-button {
+    padding: 10px 20px;
+}
+
+#todo-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#todo-list li {
+    background: #f0f0f0;
+    margin: 5px 0;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remove-button {
+    background: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
