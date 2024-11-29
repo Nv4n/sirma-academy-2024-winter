@@ -24,7 +24,13 @@ class Student extends Person {
         this.school = school;
     }
 }
+class ExportedStudent extends Student {
+    toString() {
+        return `${this.name} - ${this.age} - ${this.school}`;
+    }
+}
 
+// const p = new Person("Gosho", 12);
+// console.log(p);
 
-const p = new Person("Gosho", 12);
-console.log(p);
+module.exports = { ExportedStudent };
