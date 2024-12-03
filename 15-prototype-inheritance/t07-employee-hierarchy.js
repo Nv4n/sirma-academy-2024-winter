@@ -4,30 +4,33 @@ class Employee {
     /**
      *
      * @param {string} name
-     * @param {number} age
+     * @param {number} salary
      */
-    constructor(name, age) {
+    constructor(name, salary) {
         this.name = name;
-        this.age = age;
-    }
-    eat() {
-        console.log("I ate!");
-    }
-
-    sleep() {
-        console.log("I slept!");
+        this.salary = salary;
     }
 }
 
 class Manager extends Employee {
-    constructor(name, age) {
-        super(name, age);
+    /**
+     *
+     * @param {string} name
+     * @param {number} salary
+     */
+    constructor(name, salary) {
+        super(name, salary);
     }
 }
 
 class Engineer extends Employee {
-    constructor(name, age) {
-        super(name, age);
+    /**
+     *
+     * @param {string} name
+     * @param {number} salary
+     */
+    constructor(name, salary) {
+        super(name, salary);
     }
 }
 
@@ -37,9 +40,9 @@ class Engineer extends Employee {
  */
 function calculateBonuses(person) {
     if (person instanceof Manager) {
-        return 1;
+        return person.salary * 1.1;
     }
     if (person instanceof Engineer) {
-        return 2;
+        return person.salary * 2;
     }
 }
