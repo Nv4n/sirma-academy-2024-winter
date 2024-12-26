@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>JS DOM paragraph style</title>
+    </head>
+    <body>
+        <p id="text">JavaScript Exercises</p>
+        <div>
+            <button onclick="restyle()">Style</button>
+        </div>
+    </body>
+    <script>
+        function restyle() {
+            const paragraph = document.getElementById("text");
+            paragraph.style = "color:red;font-size:6rem";
+        }
+    </script>
+</html>

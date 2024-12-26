@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Change the content of a cell</title>
+        <style type="text/css">
+            body {
+                margin: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <table id="myTable" border="1"></table>
+        <form>
+            <input
+                type="button"
+                onclick="createTable(3,4)"
+                value="Create the 
+table"
+            />
+        </form>
+    </body>
+    <script>
+        function createTable(rowCnt, colCnt) {
+            const table = document.getElementById("myTable");
+            for (let row = 0; row < rowCnt; row++) {
+                const rowEl = document.createElement("tr");
+                for (let col = 0; col < colCnt; col++) {
+                    const colEl = document.createElement("td");
+                    colEl.textContent = `Row-${row} Column-${col}`;
+                    rowEl.appendChild(colEl);
+                }
+                table.appendChild(rowEl);
+            }
+            const btn = document.querySelector("input[type='button']");
+            btn.disabled = true;
+        }
+    </script>
+</html>
