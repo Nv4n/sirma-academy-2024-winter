@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <p>We are changing sizes</p>
+    </body>
+    <script>
+        //TODO FIX THIS
+        function debounce(func) {
+            let timeoutId;
+            return () => {
+                clearTimeout(timeoutId);
+                timeoutId = setTimeout(func, 1000);
+            };
+        }
+        (function () {
+            window.addEventListener("resize", (e) => {
+                debounce(() => {
+                    console.log(
+                        `W: ${e.currentTarget.innerWidth} x H: ${e.currentTarget.innerHeight}`
+                    );
+                })();
+            });
+        })();
+    </script>
+</html>

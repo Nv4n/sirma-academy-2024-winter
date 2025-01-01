@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <p style="width: 10rem">
+            Click on the item to change the text or click on the button to
+            create a new item.
+        </p>
+        <ul id="todoList">
+            <li><p></p></li>
+        </ul>
+        <form action="#" id="todoForm">
+            <input name="todo" placeholder="TODO" type="text" /><button
+                type="submit"
+            ></button>
+        </form>
+    </body>
+    <script>
+        (function () {
+            /** @type {HTMLFormElement} */
+            const form = document.getElementById("todoForm");
+            const todoList = document.getElementById("todoList");
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const formData = new FormData(e.target);
+                const todoText = formData.get("todo");
+                const todoEl = document.createElement('li')
+                todoEl.
+            });
+        })();
+    </script>
+</html>

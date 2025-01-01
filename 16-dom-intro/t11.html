@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <style type="text/css">
+            body {
+                margin: 30px;
+            }
+        </style>
+        <title>Highlight</title>
+    </head>
+    <body>
+        <a href="#">link</a>
+        <p>
+            <strong>We</strong> have just started <strong>this</strong> section
+            for the users <em>(beginner to intermediate)</em> who
+            <strong>want</strong> to work with
+            <strong>various</strong> JavaScript <strong>problems</strong> and
+            write scripts online to <strong>test</strong> their JavaScript
+            <strong>skill</strong>.
+        </p>
+    </body>
+    <script>
+        (function () {
+            const link = document.querySelector("a");
+            link.addEventListener("mouseover", (e) => {
+                const boldWords = document.querySelectorAll("strong");
+                boldWords.forEach((boldWord) => {
+                    boldWord.style = "background-color:yellow";
+                });
+            });
+            link.addEventListener("mouseout", (e) => {
+                const boldWords = document.querySelectorAll("strong");
+                boldWords.forEach((boldWord) => {
+                    boldWord.style = "";
+                });
+            });
+        })();
+    </script>
+</html>
