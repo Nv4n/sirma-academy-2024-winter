@@ -4,148 +4,15 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>To-Do List</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                margin: 20px;
-            }
-            h1 {
-                color: #333;
-            }
-            #todo-input {
-                width: 300px;
-                padding: 10px;
-                font-size: 16px;
-            }
-            #add-btn,
-            #reset-btn {
-                padding: 10px 20px;
-                font-size: 16px;
-                background-color: #28a745;
-                color: white;
-                border: none;
-                cursor: pointer;
-            }
-            #add-btn:hover {
-                background-color: #218838;
-            }
-            #todo-list {
-                list-style-type: none;
-                padding: 0;
-            }
-            .todo-item {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 10px;
-                margin-bottom: 5px;
-                background-color: #f8f9fa;
-                border: 1px solid #ddd;
-            }
-            .delete-btn {
-                padding: 5px 10px;
-                font-size: 14px;
-                background-color: #dc3545;
-                color: white;
-                border: none;
-                cursor: pointer;
-            }
-            .delete-btn:hover {
-                background-color: #c82333;
-            }
-        </style>
+        <link rel="stylesheet" href="styles.css" />
+        <script src="index.js" defer></script>
     </head>
     <body>
         <h1>To-Do List</h1>
         <input type="text" id="todo-input" placeholder="Enter a new task" />
         <button id="add-btn">Add Task</button>
         <button id="reset-btn">X</button>
-
+        <button id="clear-btn">Clear</button>
         <ul id="todo-list"></ul>
-
-        <script>
-            (() => {
-                const addTaskBtn = document.getElementById("add-btn");
-                const resetBtn = document.getElementById("reset-btn");
-                const todoInput = document.getElementById("todo-input");
-                const list = document.getElementById("todo-list");
-
-                const getTodoList = () => {
-                    const listJson = localStorage.getItem("todoList");
-                    const list = JSON.parse(listJson);
-
-                    if (list && list.length > 0) {
-                        return list;
-                    }
-
-                    return [];
-                };
-
-                const deleteFromLocalStorage = (id) => {
-                    const newList = todoList.filter((item) => item.id !== id);
-                    localStorage.setItem("todoList", JSON.stringify(newList));
-                };
-
-                const createDeleteBtn = (id) => {
-                    const deleteBtn = document.createElement("button");
-                    deleteBtn.className = "delete-btn";
-                    deleteBtn.innerText = "X";
-                    deleteBtn.addEventListener("click", () => {
-                        const el = document.getElementById(id);
-                        el.remove();
-                        deleteFromLocalStorage(id);
-                    });
-
-                    return deleteBtn;
-                };
-
-                const createTodo = (id, value) => {
-                    const uid = id ? id : Math.floor(Math.random() * 1000);
-                    const todo = document.createElement("li");
-                    todo.className = "todo-item";
-                    todo.innerText = value ? value : todoInput.value;
-                    todo.id = uid;
-                    const deleteBtn = createDeleteBtn(uid);
-                    todo.appendChild(deleteBtn);
-                    if (!id && !value) {
-                        // writes the changes in local storage
-                        writeTodo(uid, todoInput.value);
-                    }
-                    return todo;
-                };
-
-                const todoList = getTodoList(); // {id, value}[]
-
-                todoList.map(({ id, value }) => {
-                    const todoHtmlEl = createTodo(id, value);
-                    list.appendChild(todoHtmlEl);
-                });
-
-                const writeTodo = (id, value) => {
-                    const data = { id, value };
-                    todoList.push(data);
-
-                    localStorage.setItem("todoList", JSON.stringify(todoList));
-                };
-
-                const onAddButtonClick = () => {
-                    if (todoInput.value.length > 0) {
-                        const newTodo = createTodo();
-                        list.appendChild(newTodo);
-                        todoInput.value = "";
-                    }
-                };
-
-                addTaskBtn.addEventListener("click", onAddButtonClick);
-                resetBtn.addEventListener("click", () => {
-                    todoInput.value = "";
-                });
-                document.addEventListener("keypress", (e) => {
-                    if (e.keyCode === 13) {
-                        onAddButtonClick();
-                    }
-                });
-            })();
-        </script>
     </body>
 </html>
