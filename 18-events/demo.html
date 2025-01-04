@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <ul id="items">
+            <li id="1">Item 1</li>
+            <li id="2">Item 2</li>
+        </ul>
+
+        <div id="asd">asd</div>
+
+        <button id="remove">remove click</button>
+
+        <h3 id="prop">event propagation</h3>
+
+        <h1 id="useCapture">useCapture</h1>
+
+        <script>
+            // document.getElementById("items").addEventListener(
+            //     "click",
+            //     function (e) {
+            //         if (e.target && e.target.nodeName === "LI") {
+            //             console.log(
+            //                 "List item " + e.target.id + " was clicked!"
+            //             );
+            //         }
+            //     },
+            //     false
+            // );
+
+            const divEl = document.getElementById("asd");
+            const removeClickBtn = document.getElementById("remove");
+            const divOnClick = () => {
+                console.log("click");
+            };
+
+            divEl.addEventListener("click", divOnClick);
+
+            removeClickBtn.addEventListener("click", () => {
+                divEl.removeEventListener("click", divOnClick);
+            });
+
+            const h3El = document.getElementById("prop");
+
+            h3El.addEventListener("click", () => {
+                console.log("h3");
+            });
+
+            // document.body.addEventListener("click", () => {
+            //     console.log("from body");
+            // });
+
+            const h1 = document.getElementById("useCapture");
+            h1.addEventListener("click", () => {
+                console.log("h1 clicked useCapture === false");
+            });
+            h1.addEventListener("click", () => {
+                console.log("h1 clicked useCapture === true");
+            });
+            // window.addEventListener(
+            //   "click",
+            //   () => {
+            //     console.log("window clicked");
+            //   },
+            //   true
+            // );
+        </script>
+    </body>
+</html>
