@@ -1,0 +1,5 @@
+.height-example {
+    height: 15rem;
+    min-height: 10rem;
+    max-height: 20rem;
+}

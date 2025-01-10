@@ -1,0 +1,6 @@
+.width-example {
+    width: 12rem;
+    min-width: 10rem;
+    max-width: 15rem;
+    /* Set width, min-width, and max-width */
+}
