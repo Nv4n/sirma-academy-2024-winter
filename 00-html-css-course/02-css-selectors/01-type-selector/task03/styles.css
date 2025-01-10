@@ -1,0 +1,9 @@
+h1 {
+    background: linear-gradient(cyan, tomato);
+}
+p {
+    text-decoration: underline red wavy;
+}
+div {
+    transform: skewX(15deg);
+}
