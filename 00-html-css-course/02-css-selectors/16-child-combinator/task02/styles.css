@@ -1,0 +1,4 @@
+.parent > p {
+    font-weight: bold;
+    color: brown;
+}

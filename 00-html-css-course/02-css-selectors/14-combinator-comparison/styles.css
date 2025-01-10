@@ -1,0 +1,12 @@
+div p {
+    font-weight: bold;
+    /* Style for descendant combinator */
+}
+div > p {
+    background-color: tomato;
+    /* Style for child combinator */
+}
+
+div > div {
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
