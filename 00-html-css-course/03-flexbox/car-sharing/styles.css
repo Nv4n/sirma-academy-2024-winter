@@ -128,12 +128,12 @@ nav {
 
 .navlist {
     display: flex;
-    list-style-type: none;
-    text-decoration: none;
-    font-weight: bold;
     gap: var(--regular-gap);
     justify-content: space-around;
     padding: 0;
+    font-weight: bold;
+    list-style-type: none;
+    text-decoration: none;
 }
 
 main {
@@ -143,21 +143,21 @@ main {
 }
 .info-container {
     display: flex;
-    gap: var(--regular-gap);
     flex-direction: column;
+    gap: var(--regular-gap);
 }
 
 .socials-container {
     display: flex;
-    gap: 1rem;
     align-items: center;
+    gap: var(--regular-gap);
 }
 
 .socials {
     display: flex;
     justify-content: space-around;
-    min-width: 12rem;
     align-items: center;
+    min-width: 12rem;
 }
 
 .socials > * {
@@ -171,17 +171,20 @@ main {
 
 .promotion {
     display: flex;
-    overflow-wrap: break-word;
-    gap: 1rem;
     justify-content: space-evenly;
+    gap: var(--regular-gap);
+    overflow-wrap: break-word;
     height: 100%;
 }
 
 .promotion > article {
-    display: block;
-    padding: 0.5rem 1rem;
-    text-align: center;
+    display: flex;
     flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: var(--regular-padding);
+    padding-bottom: 1rem;
+    text-align: center;
 }
 
 .promotion > article h2 {
@@ -221,21 +224,21 @@ main {
 }
 
 .beige-block {
+    padding: var(--regular-padding);
     background-color: var(--beige-color);
     color: white;
-    padding: var(--regular-padding);
 }
 
 .brown-block {
+    padding: var(--regular-padding);
     background-color: var(--brown-color);
     color: white;
-    padding: var(--regular-padding);
 }
 
 .lightbrown-block {
+    padding: var(--regular-padding);
     background-color: var(--light-brown-color);
     color: white;
-    padding: var(--regular-padding);
 }
 
 .span-like {
