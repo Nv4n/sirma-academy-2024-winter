@@ -1,0 +1,249 @@
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+    margin: 0;
+}
+
+body {
+    /* 3. Add accessible line-height */
+    line-height: 1.5;
+    /* 4. Improve text rendering */
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 5. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* 6. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* 7. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+/* 8. Improve line wrapping */
+p {
+    text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    text-wrap: balance;
+}
+
+/*
+    9. Create a root stacking context
+  */
+#root,
+#__next {
+    isolation: isolate;
+}
+
+/* MAIN CSS */
+:root {
+    --beige-color: #ab836a;
+    --brown-color: #5a5136;
+    --light-brown-color: #a88e7c;
+    --regular-padding: 0.5rem 1rem;
+    --regular-gap: 1rem;
+}
+
+* {
+    font-family: "Poppins", serif;
+    text-decoration: none;
+    color: inherit;
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+    gap: var(--regular-gap);
+    padding: var(--regular-padding);
+}
+
+.logo {
+    display: flex;
+    width: fit-content;
+    justify-content: space-around;
+}
+
+.icon {
+    max-width: none;
+}
+
+.search {
+    display: flex;
+    border: none;
+}
+.search * {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+.search > svg {
+    cursor: pointer;
+}
+
+.search > input {
+    width: 12rem;
+}
+
+@media screen and (max-width: 700px) {
+    .search > input {
+        width: 7rem;
+    }
+}
+
+nav {
+    flex: 1;
+}
+
+.navlist {
+    display: flex;
+    list-style-type: none;
+    text-decoration: none;
+    font-weight: bold;
+    gap: var(--regular-gap);
+    justify-content: space-around;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    gap: var(--regular-gap);
+    padding: var(--regular-padding);
+}
+.info-container {
+    display: flex;
+    gap: var(--regular-gap);
+    flex-direction: column;
+}
+
+.socials-container {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.socials {
+    display: flex;
+    justify-content: space-around;
+    min-width: 12rem;
+    align-items: center;
+}
+
+.socials > * {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 100%;
+    color: var(--light-brown-color);
+    background-color: white;
+    cursor: pointer;
+}
+
+.promotion {
+    display: flex;
+    overflow-wrap: break-word;
+    gap: 1rem;
+    justify-content: space-evenly;
+    height: 100%;
+}
+
+.promotion > article {
+    display: block;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    flex: 1;
+}
+
+.promotion > article h2 {
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+.promotion > article p {
+    font-size: 1rem;
+}
+
+.img-container {
+    width: 50vw;
+    flex-shrink: 0;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media screen and (max-width: 1200px) {
+    .img-container {
+        display: none;
+    }
+}
+
+.round-like {
+    border-radius: 0.5rem;
+}
+
+.h1-like {
+    font-size: 4.5rem;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.beige-block {
+    background-color: var(--beige-color);
+    color: white;
+    padding: var(--regular-padding);
+}
+
+.brown-block {
+    background-color: var(--brown-color);
+    color: white;
+    padding: var(--regular-padding);
+}
+
+.lightbrown-block {
+    background-color: var(--light-brown-color);
+    color: white;
+    padding: var(--regular-padding);
+}
+
+.span-like {
+    font-size: 0.75rem;
+    text-align: center;
+}
+
+.p-like {
+    font-weight: bold;
+    font-size: 1.25rem;
+}
