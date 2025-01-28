@@ -1,0 +1,178 @@
+html {
+    font-family: "Poppins";
+}
+
+body {
+    background-color: #eeece6;
+}
+
+#searchField {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: none;
+    box-shadow: none;
+    appearance: none; /* For browser-specific styles */
+    font: inherit; /* Inherit font settings from parent */
+    color: inherit; /* Inherit text color */
+}
+
+input::placeholder {
+    color: grey;
+    text-transform: uppercase;
+    margin-left: 6px;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+}
+
+a:hover {
+    color: grey;
+}
+
+.backgroundColor1 {
+    background-color: #ab836a;
+}
+.backgroundColor2 {
+    background-color: #685b4d;
+}
+.backgroundColor3 {
+    background-color: #5a5136;
+}
+.backgroundColor4 {
+    background-color: #a88e7c;
+}
+
+header {
+    color: white;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap-reverse;
+}
+
+header section {
+    flex-wrap: wrap;
+    display: flex;
+    gap: 12px;
+    border-radius: 34px;
+}
+
+header section div {
+    border-radius: 34px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+header section i {
+    font-size: 24px;
+}
+
+header section nav {
+    display: flex;
+    flex-grow: 1;
+}
+
+header section nav ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-grow: 1;
+}
+
+header section nav ul li {
+    list-style: none;
+}
+
+.padding30 {
+    padding: 30px;
+}
+
+.grow {
+    flex-grow: 1;
+}
+
+.displayFlex {
+    display: flex;
+}
+
+main {
+    margin-top: 12px;
+    gap: 12px;
+}
+
+main section {
+    border: 1px solid black;
+    border-radius: 34px;
+    display: flex;
+    flex-direction: column;
+}
+
+main section div h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 46px;
+}
+
+#moto {
+    display: flex;
+    /* flex-shrink: 1; */
+    flex-direction: column;
+    align-items: center;
+    text-transform: uppercase;
+    border-radius: 34px;
+    color: white;
+    /* padding: 54px 80px 54px 80px; */
+}
+
+#leftRow {
+    margin-top: 12px;
+    padding-left: 12px;
+    align-items: center;
+    gap: 12px;
+}
+#socials {
+    color: white;
+    border-radius: 34px;
+    font-size: 32px;
+    gap: 12px;
+}
+
+main section div span {
+    font-size: 32px;
+    color: black;
+    font-weight: 700;
+}
+
+main:last-child {
+    flex-shrink: 1;
+}
+
+section > img {
+    border-radius: 34px;
+    max-width: 846px;
+}
+
+#leftLastRow {
+    justify-content: space-around;
+    gap: 12px;
+}
+#leftLastRow > div {
+    border: 1px solid red;
+    border-radius: 34px;
+    flex-grow: 1;
+    text-align: center;
+    color: white;
+}
+
+@media (max-width: 1200px) {
+    #imageContainer {
+        display: none;
+    }
+}
