@@ -1,12 +1,12 @@
 :root {
-    --primary-color: #74c69d;
-    --secondary-color: #fff;
+    --primary-color: #74C69D;
+    --secondary-color: #FFF;
     --primary-color-100: var(--primary-color);
     --primary-color-75: #74c69dc0;
     --secondary-color-100: var(--secondary-color);
-    --secondary-color-75: #ffffffc0;
+    --secondary-color-75: #FFFFFFc0;
 
-    font-family: "Work Sans", Arial, sans-serif;
+    font-family: 'Work Sans', Arial, sans-serif;
     font-size: 16px;
     line-height: 125%;
 }
@@ -15,8 +15,13 @@ body {
     margin: 0;
 }
 
+.site-content {
+    width: 1180px;
+    margin: auto;
+}
+
 h1 {
-    font-family: "Crimson Text";
+    font-family: 'Crimson Text';
     font-size: 2.5rem;
     font-weight: 700;
     line-height: 125%;
@@ -35,13 +40,26 @@ h1 {
     line-height: 125%;
 }
 
-.header-section {
-    padding: 35px 100px 38px;
-    background-color: #74c69d;
+.header-section,
+.footer-section {
+    padding: 35px 0 38px;
+    background-color: #74C69D;
+    margin-bottom: 30px;
+}
+
+.header-section-container,
+.footer-section-container {
     color: var(--secondary-color);
     display: flex;
     justify-content: space-between;
-    margin-bottom: 30px;
+    align-items: center;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 190px;
 }
 
 .logo {
@@ -66,25 +84,66 @@ h1 {
 .content-header-section {
     display: flex;
     justify-content: center;
+    margin-bottom: 82px;
 }
 
 .content-header-container {
     text-align: center;
     width: 410px;
 }
-img {
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-* {
-    box-sizing: border-box;
-}
 
 .portfolio-section {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 55px;
-    padding: 2.5rem;
+    margin-bottom: 100px;
+    justify-items: center;
+}
+
+article img {
+    width: 100%;
+}
+
+@media (max-width: 1200px) {
+    .site-content {
+        width: 900px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .site-content {
+        width: 700px;
+    }
+}
+
+@media (max-width: 768px) {
+    .site-content {
+        width: 500px;
+    }
+
+    .portfolio-section {
+        grid-template-columns: 1fr;
+        row-gap: 55px;
+    } 
+
+    /* Switch navigation to burger menu */
+    .header-section-container nav {
+        display: none;
+    }
+
+    .footer-section-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 568px) {
+    .site-content {
+        width: 320px;
+    }
+
+    /* lower article container width */
+    article {
+        width: 335px;
+    }
 }
