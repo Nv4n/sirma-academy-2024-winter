@@ -1,0 +1,78 @@
+:root {
+    --primary-color: #74c69d;
+    --primary-color-100: var(--primary-color);
+    --primary-color-75: #74c69dc0;
+
+    --white-color-vals: 255, 255, 255;
+    --white-color: rgb(255, 255, 255);
+    --white-color-100: rgb(var(--white-color-vals));
+    --white-color-75: rgba(var(--white-color-vals), 75%);
+
+    --dark-color: #212529;
+    --dark-color-100: var(--dark-color);
+
+    font-family: "Work Sans", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 125%;
+}
+
+body {
+    margin: 0;
+}
+
+strong {
+    font-weight: normal;
+}
+
+ul {
+    padding: 0;
+}
+
+.site-content {
+    width: 1180px;
+    margin: auto;
+}
+
+h1 {
+    font-family: "Crimson Text";
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 125%;
+    margin: 16px 0;
+}
+
+.label {
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--primary-color);
+}
+
+.sub-heading {
+    font-size: 1.25rem;
+    line-height: 125%;
+}
+
+/* Buttons */
+.primary-button,
+.secondary-button {
+    padding: 13px 30px 10px;
+    font-family: inherit;
+    border-radius: 5px;
+    border: 0;
+    min-width: 170px;
+}
+
+.primary-button {
+    background-color: var(--white-color);
+    color: black;
+}
+
+.secondary-button {
+    background-color: var(--dark-color);
+    color: var(--white-color);
+}
+
+img {
+    width: 100%;
+}
