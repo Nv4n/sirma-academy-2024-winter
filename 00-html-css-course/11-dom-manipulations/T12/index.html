@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            let timeoutId;
+            const body = document.querySelector("body");
+            window.addEventListener("resize", () => {
+                clearTimeout(timeoutId);
+
+                timeoutId = setTimeout(() => {
+                    console.log(
+                        `WIDTH: ${window.innerWidth}, HEIGHT: ${window.innerHeight}`
+                    );
+                    body.style = `background-color:rgb(${
+                        window.innerWidth % 255
+                    },${window.innerHeight % 255},${Math.random()*255});`;
+                }, 250);
+            });
+        </script>
+    </body>
+</html>

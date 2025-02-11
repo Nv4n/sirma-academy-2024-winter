@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Insert row in a table</title>
+    </head>
+    <body>
+        <input type="button" onclick="insertRow()" value="Insert row" />
+        <table id="sampleTable" border="1">
+            <tr class="row1">
+                <td>Row1 cell1</td>
+                <td>Row1 cell2</td>
+            </tr>
+            <tr>
+                <td>Row2 cell1</td>
+                <td>Row2 cell2</td>
+            </tr>
+        </table>
+        <br />
+        <script>
+            const table = document.querySelector("#sampleTable > *");
+            function insertRow() {
+                const rowCnt = table.children.length;
+                const row = document.createElement("tr");
+                for (let ind = 0; ind < 2; ind++) {
+                    const cellData = document.createElement("td");
+                    cellData.innerText = `Row${rowCnt + 1} cell${ind + 1}`;
+                    row.appendChild(cellData);
+                }
+                table.appendChild(row);
+            }
+        </script>
+    </body>
+</html>
